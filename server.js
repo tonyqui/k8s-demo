@@ -1,0 +1,31 @@
+const express = require('express');
+const hbs = require('hbs');
+const fs = require('fs');
+var app = express();
+
+var listenOn = 8080;
+var healthy = false;
+
+
+hbs.registerPartials(__dirname+'/views/partials');
+app.set('view engine', 'hbs');
+app.use(express.static(__dirname+'/public'));
+
+app.get('/', (req, res) => {
+    res.render('home.hbs', {
+        pageTitle: 'Home Page',
+        welcomeMessage: "The app works correctly"
+    });
+});
+
+app.get('/isHealthy', (req,res) => {
+    res.render('isHealthy.hbs', {
+        pageTitle: 'Check health of application',
+        healthCheck: healthy
+    })
+})
+
+app.listen(listenOn, () => {
+    console.log(`Server is now listening on ${listenOn}`);
+    haelthy = true;
+})
