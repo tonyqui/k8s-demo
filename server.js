@@ -1,11 +1,13 @@
 const express = require('express');
 const hbs = require('hbs');
-const fs = require('fs');
+const vote = require('./handlers/vote.js')
 var app = express();
 
 var listenOn = 8080;
 var healthCheck = false;
 var livenessProbe = false;
+
+var answers = {};
 
 hbs.registerPartials(__dirname+'/views/partials');
 app.set('view engine', 'hbs');
@@ -68,18 +70,26 @@ app.get('/setDead', (req, res) => {
 });
 
 app.get('/vote', (req, res) => {
-    console.log(req.query);
+    vote.vote(req.query.contest, req.query.preference)
+    res.writeHead(200);
+    res.send()
 });
 
+app.get('/getResults', (req, res) => {
+    console.log('result requested');
+})
+
 app.get('/display', (req, res) => {
-    var data = {
-            datasets: [{
-            data: [10, 20, 30]
-            }],
-        };
-    res.render('displayVotes.hbs', {
-       data: data
-    });
+    if (req.query.contest) {
+        res.render('displayVotes.hbs', {
+        data: `[${vote.getContestVotesAsArrays(req.query.contest)[0]}]`,
+        labels: `[${vote.getContestVotesAsArrays(req.query.contest)[1]}]`
+        });
+    }
+    else {
+        res.writeHead(404);
+        res.send()
+    }
 });
 
 app.listen(listenOn, () => {

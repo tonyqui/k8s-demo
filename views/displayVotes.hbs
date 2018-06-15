@@ -7,49 +7,40 @@
 </head>
 
 <body>
-    <canvas id="myChart" width="500" height="400" style="display:block; width:500px ; height:400px;"></canvas>
-    <script src="../public/Chart.js"></script>
-    <script>
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                datasets: [{
-                    data: [
-                        10,
-                        20,
-                        30
-                    ],
-                    backgroundColor: [
-                        "#8e5ea2", // red
-                        "#3cba9f", // green
-                        "#c45850", //blue
-                    ],
-                    label: 'A graph'
-                }],
-                // These labels appear in the legend and in the tooltips when hovering different arcs
-                labels: [
-                    'Red',
-                    'Yellow',
-                    'Blue'
-                ]
-            },
-            options: {
-                responsive: true,
-                legend: {
-                    position: 'top',
+    <div style="display:block; width:1000px ; height:975px; content-box;">
+        <canvas id="myChart" width="125" height="100" style="display:block; width:125px ; height:100px;"></canvas>
+        <script src="../public/Chart.js"></script>
+        <script>
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: {{{labels}}},
+                    datasets: [{
+                        data: {{data}},
+                        backgroundColor: [
+                            "#8e5ea2", // red
+                            "#3cba9f" // green
+                        ],
+                        label: ["tell me something","something else"]
+                    }]
                 },
-                title: {
-                    display: true,
-                    text: 'Bar Chart'
-                },
-                animation: {
-                    animateScale: true,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Bar Chart'
+                    },
+                    animation: {
+                        animateScale: true,
+                    },
                 }
-            }
-        });
-    </script>
-    <p>{{welcomeMessage}}</p>
+            });
+        </script>
+    </div>
 </body>
 
 </html>
