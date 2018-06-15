@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{{pageTitle}}</title>
+</head>
+
+<body>
+    <canvas id="myChart" width="100px" height="100px"></canvas>
+    <script src="../public/Chart.js"></script>
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [
+                        10,
+                        20,
+                        30
+                    ],
+                    backgroundColor: [
+                        "rgb(255, 0, 0)", // red
+                        "rgb(0, 255, 0)", // green
+                        "rgb(0, 0, 255)", //blue
+                    ],
+                    label: 'A graph'
+                }],
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                labels: [
+                    'Red',
+                    'Yellow',
+                    'Blue'
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Doughnut Chart'
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
+            }
+        });
+    </script>
+    <p>{{welcomeMessage}}</p>
+</body>
+
+</html>
