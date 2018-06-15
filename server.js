@@ -6,7 +6,6 @@ var app = express();
 var listenOn = 8080;
 var healthy = false;
 
-
 hbs.registerPartials(__dirname+'/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname+'/public'));
@@ -25,7 +24,24 @@ app.get('/isHealthy', (req,res) => {
     })
 })
 
+app.get('/healthCheck', (req, res) => {
+    if (healthy) {
+        res.writeHead(200);
+        res.send();
+    }
+    else {
+        res.writeHead(404);
+        res.send();
+    }
+})
+
+app.get('/setAsUnhealthy', (req, res) => {
+    healthy = false;
+    res.writeHead(200);
+    res.send();
+})
+
 app.listen(listenOn, () => {
     console.log(`Server is now listening on ${listenOn}`);
-    haelthy = true;
+    healthy = true;
 })
