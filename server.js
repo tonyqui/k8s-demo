@@ -76,14 +76,23 @@ app.get('/vote', (req, res) => {
 });
 
 app.get('/getResults', (req, res) => {
-    console.log('result requested');
-})
+    if (req.query.contest) {
+        res.send({
+            data: `[${vote.getContestVotesAsArrays(req.query.contest)[0]}]`,
+            labels: `[${vote.getContestVotesAsArrays(req.query.contest)[1]}]`
+        })
+    }
+    else {
+        res.send();
+    }
+});
 
 app.get('/display', (req, res) => {
     if (req.query.contest) {
         res.render('displayVotes.hbs', {
-        data: `[${vote.getContestVotesAsArrays(req.query.contest)[0]}]`,
-        labels: `[${vote.getContestVotesAsArrays(req.query.contest)[1]}]`
+            contest: req.query.contest,
+            data: `[${vote.getContestVotesAsArrays(req.query.contest)[0]}]`,
+            labels: `[${vote.getContestVotesAsArrays(req.query.contest)[1]}]`
         });
     }
     else {

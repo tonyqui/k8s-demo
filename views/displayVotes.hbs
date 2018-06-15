@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+
+<script type="text/javascript">
+  setTimeout(function() {
+  location.reload();
+}, 1000);
+</script>
+
 <html>
 
 <head>
@@ -32,10 +39,11 @@
                     },
                     title: {
                         display: true,
-                        text: 'Bar Chart'
+                        text: {{{contest}}}
                     },
                     animation: {
-                        animateScale: true,
+                        animateScale: false,
+                        duration: 0
                     },
                 }
             });
