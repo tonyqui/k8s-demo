@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: world_cup_contest
+  name: world_cup_contest_1.0.0
+spec:
+  containers:
+  - name: world_cup_contest
+    image: tonyqui/k8s-demo
+    ports:
+      - containerPort: 8080
+    livenessProbe:
+      httpGet:
+        path: /livenessProbe
+        port: 8080
+        httpHeaders:
+        - name: LIVENESS_PROBE
+          value: READY
+      initialDelaySeconds: 3
+      periodSeconds: 3
+    livenessProbe:
+      httpGet:
+        path: /healthCheck
+        port: 8080
+        httpHeaders:
+        - name: READINESS_PROBE
+          value: READY
+      initialDelaySeconds: 3
+      periodSeconds: 3
+    
