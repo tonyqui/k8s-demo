@@ -90,7 +90,7 @@ app.get('/getResults', (req, res) => {
 app.get('/display', (req, res) => {
     if (req.query.contest) {
         res.render('displayVotes.hbs', {
-            contest: req.query.contest,
+            contest: `'${req.query.contest}'`,
             data: `[${vote.getContestVotesAsArrays(req.query.contest)[0]}]`,
             labels: `[${vote.getContestVotesAsArrays(req.query.contest)[1]}]`
         });
