@@ -36,10 +36,25 @@ app.get('/isAlive', (req,res) => {
 
 app.get('/healthCheck', (req, res) => {
     if (healthCheck) {
+        res.setHeader('READINESS_PROBE',"READY");
         res.writeHead(200);
         res.send();
     }
     else {
+        res.setHeader('READINESS_PROBE',"NOT_READY");
+        res.writeHead(404);
+        res.send();
+    }
+});
+
+app.get('/livenessProbe', (req, res) => {
+    if (livenessProbe) {
+        res.setHeader('LIVENESS_PROBE',"READY");
+        res.writeHead(200);
+        res.send();
+    }
+    else {
+        res.setHeader('LIVENESS_PROBE',"NOT_READY");
         res.writeHead(404);
         res.send();
     }
@@ -47,6 +62,9 @@ app.get('/healthCheck', (req, res) => {
 
 app.get('/setAsNotHealthy', (req, res) => {
     healthCheck = false;
+    setTimeout(() => {
+        healthCheck = true;
+      }, 10000);
     res.writeHead(200);
     res.send();
 });
@@ -105,6 +123,6 @@ app.get('/display', (req, res) => {
 
 app.listen(listenOn, () => {
     console.log(`Server is now listening on ${listenOn}`);
-    healthy = true;
+    healthCheck = true;
     livenessProbe = true;
 });
