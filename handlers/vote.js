@@ -19,7 +19,8 @@ var getVotes = () => {
 var getContestVotesAsArrays = (contest) => {
     var aContest = votes[contest];
     var results = [];
-    if ( Object.keys(votes).length > 0) {
+    if ( typeof aContest !== 'undefined' && Object.keys(aContest).length > 0) {
+        console.log(votes);
         var values = Object.keys(aContest).map(function(key){
             return aContest[key];
         });
@@ -28,6 +29,7 @@ var getContestVotesAsArrays = (contest) => {
         });
         results = [ values, keys ];  
     }
+    console.log(`Returning: ${results}`);
     return results;
 }
 
