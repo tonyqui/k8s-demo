@@ -3,8 +3,10 @@ kind: Service
 metadata:
   name: world-cup-contest-service
 spec:
+  type: NodePort
   ports:
-  - port: 8000 
+  - name: http
+    port: 32650 
     targetPort: 8080
     protocol: TCP
   selector:
