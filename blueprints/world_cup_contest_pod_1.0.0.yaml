@@ -13,7 +13,7 @@ spec:
         path: /livenessProbe
         port: 8080
         httpHeaders:
-        - name: LIVENESS_PROBE
+        - name: LIVENESS-PROBE
           value: READY
       initialDelaySeconds: 3
       periodSeconds: 3
@@ -22,7 +22,7 @@ spec:
         path: /healthCheck
         port: 8080
         httpHeaders:
-        - name: READINESS_PROBE
+        - name: READINESS-PROBE
           value: READY
       initialDelaySeconds: 3
       periodSeconds: 3
