@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: world_cup_contest
-    image: tonyqui/k8s-demo
+    image: tonyqui/k8s-demo:0.1
     ports:
       - containerPort: 8080
     livenessProbe:
