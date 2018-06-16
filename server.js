@@ -76,10 +76,11 @@ app.get('/vote', (req, res) => {
 });
 
 app.get('/getResults', (req, res) => {
+    var results = vote.getContestVotesAsArrays(req.query.contest);
     if (req.query.contest) {
         res.send({
-            data: `[${vote.getContestVotesAsArrays(req.query.contest)[0]}]`,
-            labels: `[${vote.getContestVotesAsArrays(req.query.contest)[1]}]`
+            data: `[${results[0]}]`,
+            labels: `[${results[1]}]`
         })
     }
     else {
@@ -88,11 +89,12 @@ app.get('/getResults', (req, res) => {
 });
 
 app.get('/display', (req, res) => {
+    var results = vote.getContestVotesAsArrays(req.query.contest);
     if (req.query.contest) {
         res.render('displayVotes.hbs', {
             contest: `'${req.query.contest}'`,
-            data: `[${vote.getContestVotesAsArrays(req.query.contest)[0]}]`,
-            labels: `[${vote.getContestVotesAsArrays(req.query.contest)[1]}]`
+            data: `[${results[0]}]`,
+            labels: `[${results[1]}]`
         });
     }
     else {
