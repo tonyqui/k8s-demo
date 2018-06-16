@@ -7,7 +7,6 @@ RUN mkdir -p /app/handlers
 ADD ./server.js /app
 ADD ./package.json /app 
 ADD ./views /app/views
-ADD ./public /app/public
 ADD ./handlers /app/handlers
 
 RUN npm install

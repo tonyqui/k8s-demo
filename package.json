@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "chartjs": "^0.3.24",
     "express": "^4.16.3",
     "hbs": "^4.0.1"
   },
