@@ -6,8 +6,9 @@ spec:
   type: NodePort
   ports:
   - name: http
-    port: 32650 
+    port: 8080 
     targetPort: 8080
+    nodePort: 32650
     protocol: TCP
   selector:
     app: world-cup-contest
