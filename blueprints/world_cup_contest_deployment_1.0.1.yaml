@@ -11,7 +11,7 @@ spec:
     spec: 
       containers:
       - name: world_cup_contest
-        image: tonyqui/k8s-demo:0.1
+        image: tonyqui/k8s-demo:1.0
         ports:
           - containerPort: 8080
         livenessProbe:
@@ -19,7 +19,7 @@ spec:
             path: /livenessProbe
             port: 8080
             httpHeaders:
-            - name: LIVENESS_PROBE
+            - name: LIVENESS-PROBE
               value: READY
           initialDelaySeconds: 3
           periodSeconds: 3
@@ -28,7 +28,7 @@ spec:
             path: /healthCheck
             port: 8080
             httpHeaders:
-            - name: READINESS_PROBE
+            - name: READINESS-PROBE
               value: READY
           initialDelaySeconds: 3
           periodSeconds: 3
