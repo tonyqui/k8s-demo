@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: world-cup-contest-service
+  name: world-cup-contest-nodeport-service
 spec:
   type: NodePort
   ports:
