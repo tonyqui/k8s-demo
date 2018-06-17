@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: world-cup-contest-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - name: http
     port: 8080 
     targetPort: 8080
-    nodePort: 32650
     protocol: TCP
   selector:
     app: world-cup-contest
