@@ -19,7 +19,7 @@ spec:
           value: READY
       initialDelaySeconds: 3
       periodSeconds: 3
-    livenessProbe:
+    readinessProbe:
       httpGet:
         path: /healthCheck
         port: 8080
