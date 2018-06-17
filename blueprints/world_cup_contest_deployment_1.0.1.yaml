@@ -1,16 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: world-cup-contest-deployment
   labels:
-    test: world_cup_contest_deployment
+    test: world-cup-contest
 spec:
   replicas: 2
-  template: 
-    labels: 
-      app: world_cup_contest
+  selector:
+    matchLabels:
+      app: world-cup-contest
+  template:
+    metadata:
+      labels: 
+        app: world-cup-contest
     spec: 
       containers:
-      - name: world_cup_contest
+      - name: world-cup-contest
         image: tonyqui/k8s-demo:1.0
         ports:
           - containerPort: 8080
