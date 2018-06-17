@@ -36,12 +36,12 @@ app.get('/isAlive', (req,res) => {
 
 app.get('/healthCheck', (req, res) => {
     if (healthCheck) {
-        res.setHeader('READINESS_PROBE',"READY");
+        res.setHeader('READINESS-PROBE',"READY");
         res.writeHead(200);
         res.send();
     }
     else {
-        res.setHeader('READINESS_PROBE',"NOT_READY");
+        res.setHeader('READINESS-PROBE',"NOT_READY");
         res.writeHead(404);
         res.send();
     }
@@ -49,12 +49,12 @@ app.get('/healthCheck', (req, res) => {
 
 app.get('/livenessProbe', (req, res) => {
     if (livenessProbe) {
-        res.setHeader('LIVENESS_PROBE',"READY");
+        res.setHeader('LIVENESS-PROBE',"READY");
         res.writeHead(200);
         res.send();
     }
     else {
-        res.setHeader('LIVENESS_PROBE',"NOT_READY");
+        res.setHeader('LIVENESS-PROBE',"NOT_READY");
         res.writeHead(404);
         res.send();
     }
