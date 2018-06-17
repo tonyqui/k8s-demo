@@ -1,0 +1,15 @@
+FROM google/nodejs
+
+RUN mkdir -p /app
+RUN mkdir -p /app/views
+RUN mkdir -p /app/public
+RUN mkdir -p /app/handlers 
+ADD ./server.js /app
+ADD ./package.json /app 
+ADD ./views /app/views
+ADD ./handlers /app/handlers
+
+RUN npm install
+RUN cp /app/node_modules/chartjs/chart.js /app/public
+EXPOSE 8080
+ENTRYPOINT node /app/server.js
