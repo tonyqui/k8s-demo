@@ -10,5 +10,6 @@ ADD ./views /app/views
 ADD ./handlers /app/handlers
 
 RUN npm install
+RUN cp /app/node_modules/chartjs/chart.js /app/public
 EXPOSE 8080
 ENTRYPOINT node /app/server.js
