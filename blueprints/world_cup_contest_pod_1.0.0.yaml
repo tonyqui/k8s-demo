@@ -11,6 +11,7 @@ spec:
     ports:
       - containerPort: 8080
     livenessProbe:
+      failureThreshold: 1
       httpGet:
         path: /livenessProbe
         port: 8080
@@ -20,6 +21,7 @@ spec:
       initialDelaySeconds: 3
       periodSeconds: 3
     readinessProbe:
+      failureThreshold: 1
       httpGet:
         path: /healthCheck
         port: 8080
