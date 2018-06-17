@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: world-cup-contest-service
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    nodePort: 32650
+    port: 8080 
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: world-cup-contest
