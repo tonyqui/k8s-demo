@@ -1,23 +1,22 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  name: world-cup-contest-statefulset
+  name: world-cup-contest-deployment
   labels:
     test: world-cup-contest
 spec:
-  serviceName: world-cup-contest-nodeport-service
   replicas: 2
   selector:
     matchLabels:
       app: world-cup-contest
   template:
     metadata:
-      labels:
+      labels: 
         app: world-cup-contest
-    spec:
+    spec: 
       containers:
       - name: world-cup-contest
-        image: tonyqui/k8s-demo:1.0
+        image: tonyqui/k8s-demo:1.1
         ports:
           - containerPort: 8080
         livenessProbe:
@@ -40,15 +39,3 @@ spec:
               value: READY
           initialDelaySeconds: 3
           periodSeconds: 3
-        volumeMounts:
-        - name: world-cup-contest-data
-          mountPath: /app/files
-  volumeClaimTemplates:
-  - metadata:
-      name: world-cup-contest-data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "standard"
-      resources:
-        requests:
-          storage: 1Mi
