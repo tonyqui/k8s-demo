@@ -1,0 +1,10 @@
+apiVersion: v1
+metadata:
+  name: world-cup-contest-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 100Mi
