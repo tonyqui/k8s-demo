@@ -28,10 +28,10 @@ var vote = (aContest, aVote) => {
     if (!votes[aContest]) {
         console.log('inside first if');
         votes[aContest] = {};
-        if (!votes[aContest][aVote]) {
-            console.log('inside second if');
-            votes[aContest][aVote] = 1;
-        }
+    }
+    if (!votes[aContest][aVote]) {
+        console.log('inside second if');
+        votes[aContest][aVote] = 1;
     }
     else {
         votes[aContest][aVote] = votes[aContest][aVote]+1;
