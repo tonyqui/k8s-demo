@@ -125,4 +125,8 @@ app.listen(listenOn, () => {
     console.log(`Server is now listening on ${listenOn}`);
     healthCheck = true;
     livenessProbe = true;
+
+    // setInterval(() => {
+    //     console.log('can this be a way to offload the file system');
+    //   }, 1000);
 });
