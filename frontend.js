@@ -106,12 +106,15 @@ app.get('/vote', (req, res) => {
 app.get('/display', (req, res) => {
     //put a call here
     // var results = vote.getContestVotesAsArrays(req.query.contest);
-    axios.get(`${url}/getResults=${req.query.contest}`).then((response) => {
+    console.log('requesting display');
+    axios.get(`${url}/getResults?contest=${req.query.contest}`).then((response) => {
+	console.log("sending HTTP request to the backend");
         if (req.query.contest) {
+            console.log(response);
             res.render('displayVotes.hbs', {
                 contest: `'${req.query.contest}'`,
-                data: `[${response[0]}]`,
-                labels: `[${response[1]}]`
+                data: response.data.data,
+                labels: response.data.labels
             });
         }
         else {
