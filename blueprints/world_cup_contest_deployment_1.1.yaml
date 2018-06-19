@@ -9,6 +9,12 @@ spec:
   selector:
     matchLabels:
       app: world-cup-contest
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  minReadySeconds: 20
   template:
     metadata:
       labels: 
