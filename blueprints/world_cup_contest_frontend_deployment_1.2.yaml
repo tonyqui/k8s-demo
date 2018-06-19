@@ -16,7 +16,7 @@ spec:
     spec: 
       containers:
       - name: world-cup-contest
-        image: tonyqui/k8s-frontend:1.1
+        image: tonyqui/k8s-frontend:1.2
         ports:
           - containerPort: 8080
         livenessProbe:
