@@ -105,13 +105,13 @@ app.get('/vote', (req, res) => {
 
 app.get('/display', (req, res) => {
     //put a call here
-    var results = vote.getContestVotesAsArrays(req.query.contest);
-    axios.get(`${url}/vote?getResults=${req.query.contest}&preference=${req.query.preference}`).then((response) => {
+    // var results = vote.getContestVotesAsArrays(req.query.contest);
+    axios.get(`${url}/getResults=${req.query.contest}`).then((response) => {
         if (req.query.contest) {
             res.render('displayVotes.hbs', {
                 contest: `'${req.query.contest}'`,
-                data: `[${results[0]}]`,
-                labels: `[${results[1]}]`
+                data: `[${response[0]}]`,
+                labels: `[${response[1]}]`
             });
         }
         else {
