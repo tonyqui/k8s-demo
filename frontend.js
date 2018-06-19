@@ -88,7 +88,7 @@ app.get('/setDead', (req, res) => {
     res.send()
 });
 
-var url = "http://localhost:8090";
+var url = process.env.WORLD_CUP_CONTEST_BACKEND_SERVICE_PORT_8090_TCP;
 
 app.get('/vote', (req, res) => {
     //put a call here
