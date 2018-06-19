@@ -4,7 +4,7 @@ const vote = require('./handlers/vote.js')
 const axios = require('axios');
 var app = express();
 
-var listenOn = 8090;
+var listenOn = 8080;
 var healthCheck = false;
 var livenessProbe = false;
 
@@ -88,7 +88,7 @@ app.get('/setDead', (req, res) => {
     res.send()
 });
 
-var url = "http://localhost:8080";
+var url = "http://localhost:8090";
 
 app.get('/vote', (req, res) => {
     //put a call here

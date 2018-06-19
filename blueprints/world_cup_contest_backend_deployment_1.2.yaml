@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: world-cup-contest-deployment
+  name: world-cup-contest-deployment-backend
   labels:
     test: world-cup-contest
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: world-cup-contest
+      app: world-cup-backend-contest
   template:
     metadata:
       labels: 
-        app: world-cup-contest
+        app: world-cup-backend-contest
     spec: 
       volumes:
       - name: world-cup-contest-data
@@ -22,12 +22,12 @@ spec:
       - name: world-cup-contest
         image: tonyqui/k8s-backend:1.2
         ports:
-          - containerPort: 8080
+          - containerPort: 8090
         livenessProbe:
           failureThreshold: 1
           httpGet:
             path: /livenessProbe
-            port: 8080
+            port: 8090
             httpHeaders:
             - name: LIVENESS-PROBE
               value: READY
@@ -37,7 +37,7 @@ spec:
           failureThreshold: 1
           httpGet:
             path: /healthCheck
-            port: 8080
+            port: 8090
             httpHeaders:
             - name: READINESS-PROBE
               value: READY
